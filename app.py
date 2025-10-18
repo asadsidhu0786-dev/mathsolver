@@ -179,6 +179,6 @@ def plot_png():
     buf.seek(0)
     return send_file(buf, mimetype='image/png')
 
-if __name__ == '__main__':
-    # for development only; for production use a proper server (gunicorn)
-    app.run(debug=True, port=5000)
+if __name__ == "__main__":
+    from os import environ
+    app.run(host="0.0.0.0", port=int(environ.get("PORT", 5000)))
